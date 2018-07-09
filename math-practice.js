@@ -27,7 +27,7 @@ console.log((q + r) % p);
 // 1
 
 // 5. 27 squared is equal to what number raised to the third power?
-console.log((27 ** 2) ** (1/3));
+console.log(Math.round((27 ** 2) ** (1/3))); //give 8.999... used rounding to fix it
 // 9
 
 // 6. What is the absolute value of p - q? (Find out how to do absolute value by searching online.)
