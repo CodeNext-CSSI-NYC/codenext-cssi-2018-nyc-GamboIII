@@ -40,19 +40,36 @@ greaterThan(23, 53);
 
 // 4a. Write (declare) a function that takes one parameter called name and
 // returns (not prints out, just returns) the string "Hello ____".
-function helloName(name) {
-  returns "Hello " + name + "."
+function hello(name) {
+  return ("Hello " + name + ".");
 }
 
 // 4b. Call the function and store the result in a variable. Then, print out that variable.
 // Repeat this three times with different names.
-
+let name1 = hello("Ulysses");
+console.log(name1);
+let name2 = hello("Hubert");
+console.log(name2);
+let name3 = hello("Theodore");
+console.log(name3);
 
 
 // 5a. Write (declare) a function that takes two parameters and
 // returns (not prints out, just returns) the average of the parameters.
+function average(userNum1, userNum2) {
+  return ((userNum1 + userNum2) / 2);
+}
 
 // 5b. Call the function and store the result in a variable. Then, print out that variable
 // in a sentence like "The average is _____".
 // Repeat this three times with different numbers. What happens if you pass in
 // something that isn't a number, like true or "apple"?
+let n1 = average(4, 9);
+console.log(n1);
+let n2 = average(67, 57);
+console.log(n2);
+let n3 = average(93, 109);
+console.log(n3);
+
+//doesn't print anything
+let dummy = average("my pants", true);
