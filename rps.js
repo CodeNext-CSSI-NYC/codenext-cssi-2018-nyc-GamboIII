@@ -3,12 +3,12 @@ let readline = require("readline-sync");
 const compNum = Math.random() * 3
 let compChoice;
 
-if (0 < compNum < 1){
+if (compNum >= 0 && compNum < 1){
   compChoice = "rock";
-}else if (1 < compNum < 2){
+}else if (compNum >= 1 && compNum < 2){
   compChoice = "paper";
-}else if (2 < compNum < 3){
-  compChoice = "rock";
+}else if (compNum >= 2 && compNum < 3){
+  compChoice = "scissors";
 }
 
 console.log("The computer challenges you to a game of RPS!");
@@ -20,26 +20,26 @@ switch (true) {
     break;
 
   case (userChoice == "rock" && compChoice == "paper"):
-    console.log("The computer chose " + compChoice + ". The computer wins!");
+    console.log("The computer chose paper. The computer wins!");
     break;
 
   case (userChoice == "paper" && compChoice == "scissors"):
-    console.log("The computer chose " + compChoice + ". The computer wins!");
+    console.log("The computer chose scissors. The computer wins!");
     break;
 
   case (userChoice == "scissors" && compChoice == "rock"):
-    console.log("The computer chose " + compChoice + ". The computer wins!");
+    console.log("The computer chose rock. The computer wins!");
     break;
 
   case (compChoice == "rock" && userChoice == "paper"):
-    console.log("The computer chose " + compChoice + ". You win");
+    console.log("The computer chose paper. You win!");
     break;
 
   case (compChoice == "paper" && userChoice == "scissors"):
-    console.log("The computer chose " + compChoice + ". You win");
+    console.log("The computer chose scissors. You win!");
     break;
 
   case (compChoice == "scissors" && userChoice == "rock"):
-    console.log("The computer chose " + compChoice + ". You win");
+    console.log("The computer chose rock. You win!");
     break;
 }
