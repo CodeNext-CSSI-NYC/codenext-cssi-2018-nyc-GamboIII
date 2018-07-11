@@ -11,7 +11,7 @@ if (0 < compNum < 1){
   compChoice = "rock";
 }
 
-console.log("The computer challenges you to a game of RPS.");
+console.log("The computer challenges you to a game of RPS!");
 let userChoice = readline.question("Choose rock, paper, or scissors: ");
 
 switch (true) {
