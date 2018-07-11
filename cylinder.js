@@ -2,7 +2,7 @@
 let answer = parseInt(readline.question("Please enter 1 for the volume and surface area of a cylinder and 2 for that of a sphere: "));
 
 // cylinder
-if (answer == 1){
+if (answer == 1) {
   // asks for height and radius
   let height = parseInt(readline.question("Please enter the height of the cylinder: "));
   let cylRadius = parseInt(readline.question("Please enter the radius of the cylinder: "));
@@ -15,14 +15,14 @@ if (answer == 1){
   let cylAnswer = parseInt(readline.question("Please enter 1 for the volume and 2 for the surface area: "));
 
   //final
-  if(cylAnswer == 1){
+  if(cylAnswer == 1) {
     console.log("The volume of your cylinder is " + cylVolume + " .");
   }else if (cylAnswer == 2) {
     console.log("The surface area of your cylinder is " + cylSurface + " .");
   }else {
     console.log("Your failure to comply with this program's instructions resulted in system failure. Go find another calculator or something");
   }
-}else if(answer == 2){ //sphere
+}else if(answer == 2) { //sphere
   let sphRadius = parseInt(readline.question("Please enter the radius of the cylinder: "));
 
   // formulas
@@ -33,7 +33,7 @@ if (answer == 1){
   let sphAnswer = parseInt(readline.question("Please enter 1 for the volume and 2 for the surface area: "));
 
   //final
-  if(sphAnswer == 1){
+  if(sphAnswer == 1) {
     console.log("The volume of your sphere is " + sphVolume + " .");
   }else if (sphAnswer == 2) {
     console.log("The surface area of your sphere is " + sphSurface + " .");
