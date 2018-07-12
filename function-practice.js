@@ -25,7 +25,7 @@ squareMyNumber(81);
 function greaterThan(num1, num2) {
   if (num1 != num2) {
     console.log(Math.max(num1, num2) + " is greater than " + Math.min(num1, num2));
-  }else {
+  } else {
     console.log("The two number are equal.");
   }
 }
