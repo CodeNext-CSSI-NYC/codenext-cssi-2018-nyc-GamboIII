@@ -15,31 +15,31 @@ console.log("The computer challenges you to a game of RPS!");
 let userChoice = readline.question("Choose rock, paper, or scissors: ");
 
 switch (true) {
-  case (userChoice == compChoice):
+  case (userChoice.toLowerCase() == compChoice):
     console.log("Tie!");
     break;
 
-  case (userChoice == "rock" && compChoice == "paper"):
+  case (userChoice.toLowerCase() == "rock" && compChoice == "paper"):
     console.log("The computer chose paper. The computer wins!");
     break;
 
-  case (userChoice == "paper" && compChoice == "scissors"):
+  case (userChoice.toLowerCase() == "paper" && compChoice == "scissors"):
     console.log("The computer chose scissors. The computer wins!");
     break;
 
-  case (userChoice == "scissors" && compChoice == "rock"):
+  case (userChoice.toLowerCase() == "scissors" && compChoice == "rock"):
     console.log("The computer chose rock. The computer wins!");
     break;
 
-  case (compChoice == "rock" && userChoice == "paper"):
+  case (compChoice == "rock" && userChoice.toLowerCase() == "paper"):
+    console.log("The computer chose rock. You win!");
+    break;
+
+  case (compChoice == "paper" && userChoice.toLowerCase() == "scissors"):
     console.log("The computer chose paper. You win!");
     break;
 
-  case (compChoice == "paper" && userChoice == "scissors"):
+  case (compChoice == "scissors" && userChoice.toLowerCase() == "rock"):
     console.log("The computer chose scissors. You win!");
-    break;
-
-  case (compChoice == "scissors" && userChoice == "rock"):
-    console.log("The computer chose rock. You win!");
     break;
 }
