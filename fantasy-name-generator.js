@@ -27,7 +27,7 @@ function getNewLastName(momMaidenName, cityBorn) {
   letters of their real last name, reversed, and the model of their dream car.
 *******************************************************************************/
 function getTitle(lastName, dreamCar) {
-  return lastName.charAt(lastName.length - 3) + lastName.charAt(lastName.length - 2) + lastName.charAt(lastName.length - 1) + dreamCar;
+  return lastName.charAt(lastName.length - 3).toUpperCase() + lastName.charAt(lastName.length - 2) + lastName.charAt(lastName.length - 1) + dreamCar;
 }
 
 /****************************************************************************** getHonorific()
@@ -36,14 +36,10 @@ function getTitle(lastName, dreamCar) {
   title, " of ", and the name of the street they live on.
 *******************************************************************************/
 function getHonorific(title, street) {
-  return ge + " of " + 
+  return title + "of " + street;
 }
 
-
-
-
-/******************************************************************************
-                                     run()
+/******************************************************************************   run()
 
   This function runs the program. At the very least it should ask the user
   to answer a series of questions and store the answers in different variables.
@@ -52,11 +48,19 @@ function getHonorific(title, street) {
   to hold the results, and display it for the user to see.
 *******************************************************************************/
 function run() {
+  console.log("To generate your fantasy name, please answer these questions.");
 
+  userFirstName = readline.question("Your first name: ");
+  userLastName = readline.question("Your last name: ");
+  userMomName = readline.question("Your mom's maiden name: ");
+  userCityOfBirth = readline.question("The city where you were born: ");
+  userDreamCarModel = readline.question("The model of your dream car: ");
+  userStreetOfBirth = readline.question("The name of the street you live on: ");
+
+  console.log("Thank you for answering every question! Please wait one moment.");
+  console.log("CALCULATING, PLEASE WAIT...");
+  console.log("All hail " + getNewFirstName(userFirstName, userLastName) + " " + getNewLastName(userMomName, userCityOfBirth) + ", " + getTitle(userLastName, userDreamCarModel) + " " + getHonorific("", userStreetOfBirth) + "!");
 }
-
-
-
 
 // Run the program!
 run();
