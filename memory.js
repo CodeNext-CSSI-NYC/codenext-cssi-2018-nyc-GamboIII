@@ -44,6 +44,7 @@ function render(tracker) {
   for (let i = 0; i < tracker.length; i++) {
     str += tracker[i] + " ";
   }
+  console.log(str);
 }
 
 // This function returns a shuffled array of numbers, like [2, 3, 1, 3, 0, 2, 0, 1]
@@ -111,9 +112,27 @@ function play() {
   let numGuesses = 0;
   console.clear();
   // Your code here
-  while (isGameOver()) {
+  while (!isGameOver(tracker)) {
+    render(tracker);
+    numGuesses++;
 
+    let index1 = parseInt(readline.question("Choose the index of a card you wish to flip over: "));
+    let index2 = parseInt(readline.question("Choose another card to flip over: "));
+    let current1 = index1;
+    let current2 = index2;
+
+    tracker[index1] = answer[index1];
+    tracker[index2] = answer[index2];
+
+    console.clear();
+
+    if (index1 == index2 || answer[index1] != answer[index2]) {
+      tracker[index1] = current1;
+      tracker[index2] = current2;
+    }
   }
+
+  console.log("Game Over. It took you " + numGuesses + " guesses.");
 }
 
 function run() {
