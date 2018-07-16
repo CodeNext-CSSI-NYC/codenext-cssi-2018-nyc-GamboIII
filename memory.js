@@ -116,8 +116,8 @@ function play() {
     render(tracker);
     numGuesses++;
 
-    let index1 = parseInt(readline.question("Choose the index of a card you wish to flip over: ")) - 1;
-    let index2 = parseInt(readline.question("Choose another card to flip over: ")) - 1;
+    let index1 = parseInt(readline.question("Choose the index of a card you wish to flip over: "));
+    let index2 = parseInt(readline.question("Choose another card to flip over: "));
 
     let current1 = tracker[index1];
     let current2 = tracker[index2];
