@@ -116,15 +116,17 @@ function play() {
     render(tracker);
     numGuesses++;
 
-    let index1 = parseInt(readline.question("Choose the index of a card you wish to flip over: "));
-    let index2 = parseInt(readline.question("Choose another card to flip over: "));
-    let current1 = index1;
-    let current2 = index2;
+    let index1 = parseInt(readline.question("Choose the index of a card you wish to flip over: ")) - 1;
+    let index2 = parseInt(readline.question("Choose another card to flip over: ")) - 1;
+
+    let current1 = tracker[index1];
+    let current2 = tracker[index2];
 
     tracker[index1] = answer[index1];
     tracker[index2] = answer[index2];
 
     console.clear();
+    render(tracker);
 
     if (index1 == index2 || answer[index1] != answer[index2]) {
       tracker[index1] = current1;
