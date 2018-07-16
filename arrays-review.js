@@ -210,12 +210,12 @@ for (let i = 0; i < 10; i++) {
 // Something like: ["Aclubs", "Adiamonds", "Aspades", "Ahearts", "2Clubs", "2Diamonds", ...]
 
 let deck = [];
+
 for (let i = 1; i <= 13; i++) {
-  let str = "";
-
   for (let j = 1; j <= 4; j++) {
+    let str = "";
 
-    if (i > 1 && i < 11) {
+    if (i >= 2 && i <= 10) {
       str += i + " of ";
     } else if (i == 1) {
       str += "A of ";
@@ -236,9 +236,9 @@ for (let i = 1; i <= 13; i++) {
     } else if (j == 4) {
       str += "Hearts";
     }
-  }
 
-  deck.push(str);
+    deck.push(str);
+  }
 }
 
 console.log(deck);
