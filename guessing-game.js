@@ -10,3 +10,21 @@
 // Also, you should be tracking how many times they have guessed.
 // Then, at the end, when you tell them that they guessed correctly,
 // you should mention how many guesses it took them.
+let readline = require("readline-sync");
+let randomInt = require('random-int')
+
+let numberToGuess = randomInt(1, 100);
+let userGuess = readline.question("Please guess a number between 1 to 100: ");
+let counter = 1;
+
+while (userGuess != numberToGuess) {
+  if (userGuess < numberToGuess) {
+    userGuess = readline.question("Your number was too low. You need to guess higher: ");
+    counter++;
+  } else if (userGuess > numberToGuess) {
+    userGuess = readline.question("Your number was too high. You need to guess lower: ");
+    counter++;
+  }
+}
+
+console.log("Correct! It took you " + counter + " tries to guess " + numberToGuess + ".");
