@@ -81,13 +81,42 @@ let objectEqual = require('object-equal');
 // Track all of the anagrams in a new array and print it out at the end.
 // Make sure you test this out. One pair of anagrams that are both in the list are:
 // scared and sacred. I'm sure there are many more. Find some!
+function viewAnagrams(str) {
+  let anagrams = [];
 
+  for (let i = 0; i < words.length; i++) {
+    if (objectEqual(letterCountAgain(str), letterCountAgain(words[i])) && str != words[i]) {
+      anagrams.push(words[i]);
+    }
+  }
 
+  if (anagrams.length == 0) {
+    return "Your word has 0 anagrams.";
+  } else {
+    console.log(anagrams);
+    return "Your word has " + anagrams.length + " anagrams.";
+  }
+}
+
+console.log(viewAnagrams("atrs"));
 
 // 5. Find all words in the array that contain at least 4 E's.
 // You will need to create a counter object for each word in the array.
 // And then figure out a way to check if it has at least 4 E's.
+function has4Es() {
+  let has4Es = [];
 
+  for (let i = 0; i < words.length; i++) {
+    if (letterCountAgain(words[i]).e == 4) {
+      has4Es.push(words[i]);
+    }
+  }
+  console.log(has4Es.length + " have exactly four Es.");
+
+  return has4Es;
+}
+
+console.log(has4Es());
 
 // Bonus
 // 6. Find all words that are the same forwards and backwards.
