@@ -5,11 +5,12 @@ let randomInt = require('random-int');
 
 // This statement gives us all the 7 and 8 letter words from the list.
 // Those seems like good lengths for hangman, but feel free to change it up.
-let wordsToPickFrom = words.filter(word => word.length == 7 || word.length == 8);
+let wordsToPickFrom = words.filter(word => word.length == randomInt(4, 12));
 
 // Let's make a hangman game. Step 1 is to randomly choose a word from wordsToPickFrom
 // Use the random-int package and pick a random index from wordsToPickFrom
-
+secretWord = wordsToPickFrom[randomInt(0, wordsToPickFrom.length - 1)];
+console.log(secretWord);
 // We will use an array to track the letters that the user has guessed so far.
 // At the start, for a seven letter word that array will look like this:
 // ["_", "_", "_", "_", "_", "_", "_"]
@@ -19,11 +20,19 @@ let wordsToPickFrom = words.filter(word => word.length == 7 || word.length == 8)
 // We will replace the underscores (_) with the letter. So if the word is musical
 // and you guess u, this tracker should become ["_", "U", "_", "_", "_", "_", "_"]
 
+tracker = [];
+for (let i = 0; i < secretWord.length; i++) {
+  tracker.push("_");
+}
+
 // Create a function called render that takes in the tracker array and prints it out nicely.
 // When you print it out it should look like:
 // _ U _ _ _ _ _
 // (use join to make a string that looks like that)
 // Call your functions with a few different tracker arrays to make sure it works
+function render(arr) {
+  console.log(arr.join(" "));
+}
 
 // The main part of the game is:
 // Ask the user to guess a letter
@@ -36,6 +45,94 @@ let wordsToPickFrom = words.filter(word => word.length == 7 || word.length == 8)
 // To check that, you should write a function called isRevealed that takes in an
 // array and returns whether or not all of the letters have been guessed.
 // You can clear the console each time if you want to, but you don't need to.
+function isRevealed(arr) {
+  if (arr.join("").includes("_")) {
+    return false;
+  }
+  return true;
+}
+
+function displayHangPost(num) {
+  //     |---|
+  //     |  ( )
+  //     | --|--
+  //     |  /\
+  // --------
+
+  let hangPost = "     |---|\n     |\n     |\n     |\n     |\n --------";
+  let hangPostWithHead = "     |---|\n     |  ( )\n     |\n     |\n     |\n --------";
+  let hangPostWithTorso = "     |---|\n     |  ( )\n     |   |  \n     |\n     |\n --------";
+  let hangPostWithOneArm = "     |---|\n     |  ( )\n     | --|  \n     |\n     |\n --------";
+  let hangPostWithTwoArms = "     |---|\n     |  ( )\n     | --|--\n     |\n     |\n --------";
+  let hangPostWithOneLeg = "     |---|\n     |  ( )\n     | --|--\n     |  /\n     |\n --------";
+  let hangPostWithTwoLegs = "     |---|\n     |  ( )\n     | --|--\n     |  / \\\n     |\n --------";
+
+  switch (num) {
+    case 0: console.log(hangPost);
+    break;
+
+    case 1: console.log(hangPostWithHead);
+    break;
+
+    case 2: console.log(hangPostWithTorso);
+    break;
+
+    case 3: console.log(hangPostWithOneArm);
+    break;
+
+    case 4: console.log(hangPostWithTwoArms);
+    break;
+
+    case 5: console.log(hangPostWithOneLeg);
+    break;
+
+    case 6: console.log(hangPostWithTwoLegs);
+    break;
+  }
+}
+
+let userWordGuess = "";
+let userTries = 0;
+let wordBank = [];
+
+console.clear()
+while (!isRevealed(tracker)) {
+  displayHangPost(userTries);
+  render(tracker);
+
+  if (!secretWord.includes(userWordGuess) && !wordBank.includes(userWordGuess) && userWordGuess.length == 1) {
+    wordBank.push(userWordGuess);
+  }
+  console.log("Wrong letters: " + wordBank.join(", "));
+
+  userWordGuess = readline.question("Guess a letter in the word or the word itself: ");
+  for (let i = 0; i < secretWord.length; i++) {
+    if (userWordGuess == secretWord[i]) {
+      tracker[i] = userWordGuess;
+    } else if (userWordGuess == secretWord) {
+      tracker = userWordGuess.split().join(" ").split(" ");
+    }
+  }
+  userTries++;
+
+  console.clear();
+
+  if (userTries == 6) {
+    console.clear();
+    displayHangPost(userTries);
+
+    tracker = secretWord.split().join(" ").split(" ");
+    render(tracker);
+
+    console.log("YOU LOSE");
+  }
+}
+
+if (userTries < 6) {
+  displayHangPost(userTries);
+  render(tracker);
+  console.log("Nice! It took you " + userTries + " tries.");
+}
 
 // Once you have a basic version working, here are some wrinkles you can add if you want:
 // 1. Keep track of the user's incorrect guesses and end the game if they guess wrong
