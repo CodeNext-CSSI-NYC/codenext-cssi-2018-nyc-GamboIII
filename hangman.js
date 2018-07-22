@@ -94,10 +94,11 @@ function displayHangPost(num) {
 let userWordGuess = "";
 let userTries = 0;
 let wordBank = [];
+let wrongGuess = 0;
 
 console.clear()
 while (!isRevealed(tracker)) {
-  displayHangPost(userTries);
+  displayHangPost(wrongGuess);
   render(tracker);
 
   if (!secretWord.includes(userWordGuess) && !wordBank.includes(userWordGuess) && userWordGuess.length == 1) {
@@ -105,33 +106,40 @@ while (!isRevealed(tracker)) {
   }
   console.log("Wrong letters: " + wordBank.join(", "));
 
+  // User guesses a letter or the word itself and the tracker updates
   userWordGuess = readline.question("Guess a letter in the word or the word itself: ");
   for (let i = 0; i < secretWord.length; i++) {
     if (userWordGuess == secretWord[i]) {
       tracker[i] = userWordGuess;
     } else if (userWordGuess == secretWord) {
-      tracker = userWordGuess.split().join(" ").split(" ");
+      tracker = userWordGuess.split();
     }
+  }
+
+  if (!secretWord.includes(userWordGuess)) {
+    wrongGuess++;
   }
   userTries++;
 
   console.clear();
 
-  if (userTries == 6) {
+  if (wrongGuess == 6) {
     console.clear();
-    displayHangPost(userTries);
+    displayHangPost(wrongGuess);
 
-    tracker = secretWord.split().join(" ").split(" ");
+    tracker = secretWord.split();
     render(tracker);
 
     console.log("YOU LOSE");
   }
 }
 
-if (userTries < 6) {
-  displayHangPost(userTries);
-  render(tracker);
-  console.log("Nice! It took you " + userTries + " tries.");
+displayHangPost(wrongGuess);
+render(tracker);
+if (wrongGuess == 1) {
+  console.log("INCREDIBLE!");
+} else {
+  console.log("Nice! It took you " + userTries + " tries!");
 }
 
 // Once you have a basic version working, here are some wrinkles you can add if you want:
