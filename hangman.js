@@ -134,11 +134,12 @@ while (!isRevealed(tracker)) {
   }
 }
 
+console.clear();
 displayHangPost(wrongGuess);
 render(tracker);
 if (wrongGuess == 1) {
   console.log("INCREDIBLE!");
-} else {
+} else if (wrongGuess != 6) {
   console.log("Nice! It took you " + userTries + " tries!");
 }
 
